@@ -1,0 +1,5 @@
+[program:decider]
+command=python /etc/app/decider.py
+user=root
+autostart=true
+autorestart=true

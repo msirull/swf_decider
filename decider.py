@@ -29,3 +29,6 @@ class HelloDecider(swf.Decider):
                 self.complete(decisions=decisions)
             if history is False:
                 history = "No decisions to make"
+
+if __name__ == '__main__':
+    HelloDecider().run()
