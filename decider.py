@@ -1,5 +1,7 @@
 # hello_decider.py
 import boto.swf.layer2 as swf
+import time,logging
+logging.basicConfig(filename='/var/log/decider/decider.log',level=logging.INFO)
 
 DOMAIN = 'demo'
 ACTIVITY = 'HelloWorld'
@@ -24,6 +26,7 @@ class HelloDecider(swf.Decider):
                 decisions = swf.Layer1Decisions()
                 if last_event['eventType'] == 'WorkflowExecutionStarted':
                     decisions.schedule_activity_task('saying_hi', ACTIVITY, VERSION, task_list=TASKLIST)
+                    logging.info(str(time.time()))
                 elif last_event['eventType'] == 'ActivityTaskCompleted':
                     decisions.complete_workflow_execution()
                 self.complete(decisions=decisions)
