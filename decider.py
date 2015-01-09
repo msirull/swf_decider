@@ -1,7 +1,7 @@
 # hello_decider.py
 import boto.swf.layer2 as swf
 import time,logging
-logging.basicConfig(filename='/var/log/decider/decider.log',level=logging.INFO)
+logging.basicConfig(filename='/var/log/app/app.log',level=logging.INFO)
 
 DOMAIN = 'demo'
 ACTIVITY = 'HelloWorld'
