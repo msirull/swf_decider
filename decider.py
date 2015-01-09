@@ -25,8 +25,9 @@ class HelloDecider(swf.Decider):
 
                 decisions = swf.Layer1Decisions()
                 if last_event['eventType'] == 'WorkflowExecutionStarted':
+                    logging.info(str(time.time()) + " is the start time")
                     decisions.schedule_activity_task('saying_hi', ACTIVITY, VERSION, task_list=TASKLIST)
-                    logging.info(str(time.time()))
+                    logging.info(str(time.time()) + " is the end time")
                 elif last_event['eventType'] == 'ActivityTaskCompleted':
                     decisions.complete_workflow_execution()
                 self.complete(decisions=decisions)
